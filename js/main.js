@@ -49,10 +49,21 @@ const serviciosDisponibles = [
     },
 
 ]
-console.log(serviciosDisponibles)
+//console.log(serviciosDisponibles)
 
-const container = document.getElementById("container")
+const container = document.getElementById("container");
+const btnCarrito = document.getElementById("btn-carrito");
 
+let carrito = []; 
+
+function agregarCarrito(id){
+    const servicioAAgregar = servicio.find(el => el.id === id )
+    if(carrito.some(element => element.id === servicio.id))
+        carrito.push(servicioAAgregar);
+        console.log(carrito);
+    }
+
+    
 serviciosDisponibles.forEach(servicio => {
     const div = document.createElement("div")
     div.className = "divCard"
@@ -69,6 +80,10 @@ serviciosDisponibles.forEach(servicio => {
     `
     container.appendChild(div)
 });
+ 
+const botonMostrarOcultar = document.createElement("buttom")
+botonMostrarOcultar.innerText = mostrar ? "Ocultar" : "Mostrar";
+btnCarrito.appendChild(botonMostrarOcultar)
 
 
 
