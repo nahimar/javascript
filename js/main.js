@@ -58,27 +58,52 @@ Y ONCLICK EN AGREGAR*/
 const container = document.getElementById("container");
 const btnCarrito = document.getElementById("btn-carrito");
 const buttonServicio = document.getElementById("agregar")
+const carrito1 = document.getElementById("carrito")
 //let carrito = document.getElementById("carrito")
 console.log(buttonServicio)
 
 
-mostrar = false;
 
-let carrito = []; 
-console.log(carrito)
+let registro = document.getElementById("registro")
+registro.addEventListener("submit", validarRegistro);
+//JSON.parce(localStorage.getItem("registro"))
 
-function agregarAlCarrito(id){
-    const servicioAAgregar = serviciosDisponibles.find(el => el.id === id );
+function validarRegistro(e){
+    e.preventDefault();
+    console.log("Mensaje enviado")
+    let registro = e.target
+    console.log();
+    console.log(registro.children[0].value);
+    console.log(registro.children[1].value);
+    console.log(registro.children[2].value);
+    alert ("Gracias por enviarnos tu mensaje, nos pondremos en contacto contigo")
+
+    registro.children[0].value = ""
+    registro.children[1].value = ""
+    registro.children[2].value = ""
+   
+}
+
+
+//mostrar = false;
+
+//let carrito = []; 
+//console.log(carrito)
+
+
+/*function agregarAlCarrito(id){
+    carrito.innerHTML= "";
+    const servicioAAgregar = servicios.find(el => el.id === id );
     if (carrito.some(element => element.id === servicioAAgregar.id)){
     alert("ya lo agregaste");
     }else {
         carrito.push(servicioAAgregar);
-      //  console.log(carrito);
+       console.log(carrito);
         };
-    };
+    };*/
 //console.log(carrito);
 
-  btnCarrito.onclick = () => agregarACarrito(serviciosDisponibles.id)
+  //btnCarrito.onclick = () => agregarACarrito(servicios.id)
 //console.log(carrito)
 
 serviciosDisponibles.forEach(servicio => {
@@ -94,15 +119,16 @@ serviciosDisponibles.forEach(servicio => {
         <button id="btn-carrito" class="btn-carrito">Agregar</button> 
     </div>
     `
-    btnCarrito.onclick = agregarAlCarrito(servicio.id)
+    btnCarrito.onclick = () => alert ("Agregaste al carrito")
+    //btnCarrito.onclick = agregarAlCarrito(servicio.id)
    container.appendChild(div)
    //buttonServicio.innerText = appendChild(div)
 });
  
-const botonMostrarOcultar = document.createElement("button")
-botonMostrarOcultar.innerText = mostrar ? "Ocultar" : "Mostrar";
+//const botonMostrarOcultar = document.createElement("button")
+//botonMostrarOcultar.innerText = mostrar ? "Ocultar" : "Mostrar";
 
-btnCarrito.appendChild(botonMostrarOcultar)
+//btnCarrito.appendChild(botonMostrarOcultar)
 
 
 
