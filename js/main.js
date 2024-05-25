@@ -51,19 +51,36 @@ const serviciosDisponibles = [
 ]
 //console.log(serviciosDisponibles)
 
+/*QUEDA QUE FUNCIONE EL BOTON DE AGREGAR 
+LOCAL STORAG DE CARRITO 
+Y ONCLICK EN AGREGAR*/
+
 const container = document.getElementById("container");
 const btnCarrito = document.getElementById("btn-carrito");
+const buttonServicio = document.getElementById("agregar")
+//let carrito = document.getElementById("carrito")
+console.log(buttonServicio)
+
+
+mostrar = false;
 
 let carrito = []; 
+console.log(carrito)
 
-function agregarCarrito(id){
-    const servicioAAgregar = servicio.find(el => el.id === id )
-    if(carrito.some(element => element.id === servicio.id))
+function agregarAlCarrito(id){
+    const servicioAAgregar = serviciosDisponibles.find(el => el.id === id );
+    if (carrito.some(element => element.id === servicioAAgregar.id)){
+    alert("ya lo agregaste");
+    }else {
         carrito.push(servicioAAgregar);
-        console.log(carrito);
-    }
+      //  console.log(carrito);
+        };
+    };
+//console.log(carrito);
 
-    
+  btnCarrito.onclick = () => agregarACarrito(serviciosDisponibles.id)
+//console.log(carrito)
+
 serviciosDisponibles.forEach(servicio => {
     const div = document.createElement("div")
     div.className = "divCard"
@@ -74,15 +91,17 @@ serviciosDisponibles.forEach(servicio => {
     <div>
         <h2 class="h2Servicio">${servicio.servicio}</h2>
         <p class="pServicio">${servicio.precio}</p>
-        <button class="buttonServicio">Agregar</button>
+        <button id="btn-carrito" class="btn-carrito">Agregar</button> 
     </div>
-
     `
-    container.appendChild(div)
+    btnCarrito.onclick = agregarAlCarrito(servicio.id)
+   container.appendChild(div)
+   //buttonServicio.innerText = appendChild(div)
 });
  
-const botonMostrarOcultar = document.createElement("buttom")
+const botonMostrarOcultar = document.createElement("button")
 botonMostrarOcultar.innerText = mostrar ? "Ocultar" : "Mostrar";
+
 btnCarrito.appendChild(botonMostrarOcultar)
 
 
