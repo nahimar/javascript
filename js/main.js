@@ -62,27 +62,36 @@ const carrito1 = document.getElementById("carrito")
 //let carrito = document.getElementById("carrito")
 console.log(buttonServicio)
 
+const enviar = document.getElementById("enviar");
+document.body.appendChild(enviar);
 
-
-let registro = document.getElementById("registro")
-registro.addEventListener("submit", validarRegistro);
+//const registro = document.getElementById("registro")
+//registro.addEventListener("submit", validarRegistro);
 //JSON.parce(localStorage.getItem("registro"))
 
-function validarRegistro(e){
-    e.preventDefault();
-    console.log("Mensaje enviado")
-    let registro = e.target
-    console.log();
-    console.log(registro.children[0].value);
-    console.log(registro.children[1].value);
-    console.log(registro.children[2].value);
-    alert ("Gracias por enviarnos tu mensaje, nos pondremos en contacto contigo")
+//let Registro =  document.createElement("button");
+//botonRegistro.innerText = "Enviar consulta"; 
+enviar.onclick = () => Swal.fire({
+    title: "Mensaje enviado!",
+    text: "Nos pondremos en contacto en las proximas 12 horas",
+    icon: "success"
+  });
 
-    registro.children[0].value = ""
-    registro.children[1].value = ""
-    registro.children[2].value = ""
+/*function validarenviar(e){
+    e.preventDefault();
+    //console.log("Mensaje enviado")
+     enviar = e.target
+    console.log();
+    console.log(enviar.children[0].value);
+    console.log(enviar.children[1].value);
+    console.log(enviar.children[2].value);
+    //alert ("Gracias por enviarnos tu mensaje, nos pondremos en contacto contigo")
+
+    enviar.children[0].value = ""
+    enviar.children[1].value = ""
+    enviar.children[2].value = ""
    
-}
+}*/
 
 
 //mostrar = false;

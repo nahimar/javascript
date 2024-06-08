@@ -34,11 +34,31 @@
 .btn-carrito{
     background-color:palevioletred;
 }
-
-.registro {
+ 
+.enviar {
    text-align: center;
    padding: 5px 2px;
 font-size: 3rem;
 margin: 2rem;
-
 }
+
+.mensaje {
+    text-align: center;
+    padding: 5px 2px;
+ font-size: 3rem;
+ margin: 2rem;
+ }
+
+ .celular {
+    text-align: center;
+    padding: 5px 2px;
+ font-size: 3rem;
+ margin: 2rem;
+ }
+
+ .correo {
+    text-align: center;
+    padding: 5px 2px;
+ font-size: 3rem;
+ margin: 2rem;
+ }
