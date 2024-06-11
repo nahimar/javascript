@@ -55,12 +55,15 @@ const serviciosDisponibles = [
 LOCAL STORAG DE CARRITO 
 Y ONCLICK EN AGREGAR*/
 
-const container = document.getElementById("container");
-const btnCarrito = document.getElementById("btn-carrito");
-const buttonServicio = document.getElementById("agregar")
-const carrito1 = document.getElementById("carrito")
+//const container = document.getElementById("container");
+//const btnAgregar = document.getElementById("btncarrito");
+//const buttonServicio = document.getElementById("agregar")
+//const carrito1 = document.getElementById("carrito")
 //let carrito = document.getElementById("carrito")
-console.log(buttonServicio)
+//console.log(buttonServicio)
+//btnAgregar.innerText = "Agregar";
+//abtnAgregar.className = "btn-add";
+
 
 const enviar = document.getElementById("enviar");
 document.body.appendChild(enviar);
@@ -125,15 +128,32 @@ serviciosDisponibles.forEach(servicio => {
     <div>
         <h2 class="h2Servicio">${servicio.servicio}</h2>
         <p class="pServicio">${servicio.precio}</p>
-        <button id="btn-carrito" class="btn-carrito">Agregar</button> 
+        <button id="btn-carrito" class="btncarrito">Agregar</button> 
     </div>
     `
-    btnCarrito.onclick = () => alert ("Agregaste al carrito")
+   
     //btnCarrito.onclick = agregarAlCarrito(servicio.id)
    container.appendChild(div)
    //buttonServicio.innerText = appendChild(div)
 });
- 
+
+//const btnCarrito = document.getElementById ("Agregar")
+
+btncarrito.onclick = () => agregarACarrito(servicio.id);
+
+let carrito = [] 
+
+function agregarACarrito(id){
+    const servicioAAgregar = servicio.find(el => el.id ===id);
+    if (carrito.some(element => element.id === servicioAAgregar)){
+        alert("agregado")
+    } else {
+        carrito.push(servicioAAgregar);
+        
+    }
+}
+console.log(carrito);
+
 //const botonMostrarOcultar = document.createElement("button")
 //botonMostrarOcultar.innerText = mostrar ? "Ocultar" : "Mostrar";
 
@@ -239,4 +259,4 @@ function validarIniciar(e){
 }*/
 
 // const carrito = document.getElementById("carrito");
-// const btnarrito = document.getElementById("btn-carrito");
+// const btnarrito = document.getElementById("btn-carri
