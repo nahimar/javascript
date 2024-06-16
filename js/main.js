@@ -1,4 +1,4 @@
-const serviciosDisponibles = [
+/*const serviciosDisponibles = [
     {
         id: 1,
         servicio: "Esculpidas",
@@ -48,7 +48,7 @@ const serviciosDisponibles = [
         imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs_6KltSqAoLyB7JuL5jQDb1neFi1vp70aW2U8SkOPWw&s"
     },
 
-]
+]*/
 //console.log(serviciosDisponibles)
 
 /*QUEDA QUE FUNCIONE EL BOTON DE AGREGAR 
@@ -67,6 +67,11 @@ Y ONCLICK EN AGREGAR*/
 
 const enviar = document.getElementById("enviar");
 document.body.appendChild(enviar);
+enviar.onclick = () => Swal.fire({
+    title: "Mensaje enviado!",
+    text: "Nos pondremos en contacto en las proximas 12 horas",
+    icon: "success"
+  });
 
 //const registro = document.getElementById("registro")
 //registro.addEventListener("submit", validarRegistro);
@@ -74,11 +79,6 @@ document.body.appendChild(enviar);
 
 //let Registro =  document.createElement("button");
 //botonRegistro.innerText = "Enviar consulta"; 
-enviar.onclick = () => Swal.fire({
-    title: "Mensaje enviado!",
-    text: "Nos pondremos en contacto en las proximas 12 horas",
-    icon: "success"
-  });
 
 /*function validarenviar(e){
     e.preventDefault();
@@ -118,7 +118,28 @@ enviar.onclick = () => Swal.fire({
   //btnCarrito.onclick = () => agregarACarrito(servicios.id)
 //console.log(carrito)
 
-serviciosDisponibles.forEach(servicio => {
+
+
+//const btnCarrito = document.getElementById ("Agregar")
+
+//btncarrito.onclick = () => agregarACarrito(servicio.id);
+
+////ACA
+
+
+/*servicio()
+.then(() => {
+    console.log("RESUELTO", )
+    setTimeout(() => {
+        
+        const loader = document.getElementById("loader");
+        loader.remove();
+        
+    }, 2500);
+});
+*/
+
+/*serviciosDisponibles.forEach(servicio => {
     const div = document.createElement("div")
     div.className = "divCard"
     div.innerHTML = `
@@ -128,31 +149,61 @@ serviciosDisponibles.forEach(servicio => {
     <div>
         <h2 class="h2Servicio">${servicio.servicio}</h2>
         <p class="pServicio">${servicio.precio}</p>
-        <button id="btn-carrito" class="btncarrito">Agregar</button> 
+        <button id="btn-carrito" class="btncarrito" onclick="agregarACarrito(${servicio.id})">Agregar</button>  
+         
     </div>
     `
+  
    
     //btnCarrito.onclick = agregarAlCarrito(servicio.id)
    container.appendChild(div)
    //buttonServicio.innerText = appendChild(div)
+});*/
+
+function crearCard(servicio){
+    const card = document.createElement("card");
+    
+    card.innerHTML =  `
+    <div class="divImg">
+    <img class="imagen" src="${servicio.imagen}" alt="${servicio.servicio}">
+    </div>
+    <div>
+        <h2 class="h2Servicio">${servicio.servicio}</h2>
+        <p class="pServicio">${servicio.precio}</p>
+        <button id="btn-carrito" class="btncarrito" onclick="agregarACarrito(${servicio.id})">Agregar</button>  
+         
+    </div>
+    `
+    container.append(card)   
+}
+
+
+
+fetch("./data.json")
+.then(response => response.json())
+.then(data => {
+    data.forEach(element => {
+        crearCard(element);
+    });
 });
 
-//const btnCarrito = document.getElementById ("Agregar")
+const carritoDeCompra = JSON.parse(localStorage.getItem("carritoDeCompra")) || []
 
-btncarrito.onclick = () => agregarACarrito(servicio.id);
-
-let carrito = [] 
-
-function agregarACarrito(id){
-    const servicioAAgregar = servicio.find(el => el.id ===id);
-    if (carrito.some(element => element.id === servicioAAgregar)){
-        alert("agregado")
+function agregarACarrito(servicio) {
+    const servicioAgregado = response.find(s => s.id === servicio);  
+    
+    if (servicioAgregado) {        
+       carritoDeCompra.push(servicioAgregado);
+        console.log(carritoDeCompra);
+          localStorage.setItem("carritoDeCompra", JSON.stringify(carritoDeCompra));
     } else {
-        carrito.push(servicioAAgregar);
-        
+        console.log("Servicio no encontrado");
+      
     }
 }
-console.log(carrito);
+
+
+//console.log(carrito);
 
 //const botonMostrarOcultar = document.createElement("button")
 //botonMostrarOcultar.innerText = mostrar ? "Ocultar" : "Mostrar";
