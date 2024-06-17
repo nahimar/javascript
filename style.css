@@ -20,19 +20,23 @@
     box-shadow: 2px 2px rgba(0, 0, 0, 0.322);
 }
 
-.divImg{
-    height: 50%;
-}
-
 .imagen{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 30rem;
+    height: 30rem;
 }
 
+.h2Servicio{
+   font-size : 3rem;
+}
 
-.btn-carrito{
+.pServicio{
+    font-size : 3rem;
+ }
+
+.btncarrito{
     background-color:palevioletred;
+    width: 5rem;
+    height: 5rem;
 }
  
 .enviar {
@@ -40,6 +44,7 @@
    padding: 5px 2px;
 font-size: 3rem;
 margin: 2rem;
+background-color:palevioletred;
 }
 
 .mensaje {
