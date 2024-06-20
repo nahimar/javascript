@@ -1,12 +1,12 @@
+let productos = []
 
-
-const enviar = document.getElementById("enviar");
+/*const enviar = document.getElementById("enviar");
 document.body.appendChild(enviar);
 enviar.onclick = () => Swal.fire({
     title: "Mensaje enviado!",
     text: `Nos pondremos en contacto en las proximas 12 horas para coordinar horario`,
     icon: "success"
-  });
+  });*/
 
 //const registro = document.getElementById("registro")
 //registro.addEventListener("submit", validarRegistro);
@@ -129,19 +129,18 @@ function crearCard(servicio){
 
 
 
-
-
 const CARRITO_COMPRAS = {
     productos: [],
     cantidad: 0,
-    total: 0
+    total: 0,
 }
 
 
+
 function agregarACarrito(servicio) {
-    const servicioAgregado = serviciosDisponibles.find(s => s.id === servicio);  
+    const agregarACarrito = productos.find(s => s.id === servicio);  
     
-    if (servicioAgregado) {         
+    if (agregarACarrito) {         
        //CARRITO_COMPRAS.push(servicioAgregado)
         CARRITO_COMPRAS.productos.push(servicioAgregado);
         CARRITO_COMPRAS.cantidad++;
@@ -152,7 +151,31 @@ function agregarACarrito(servicio) {
     }
 }
 
+fetch("./data.json")
+.then(response => response.json())
+.then(data => {
+    data.forEach(element => {
+        agregarACarrito(element);
+    });}
+);
 
+const confirmarCompra = document.getElementById("confirmarCompra");
+document.body.appendChild(confirmarCompra);
+confirmarCompra.onclick = () => Swal.fire({
+    title: "Mensaje enviado!",
+    text: `Nos pondremos en contacto en las proximas 12 horas para coordinar horario`,
+    icon: "success"
+  });
+
+  const vaciarCarrito = document.getElementById("vaciarCarrito");
+document.body.appendChild(vaciarCarrito);
+vaciarCarrito.onclick = () => Swal.fire({
+    title: "Mensaje enviado!",
+    text: `Todos tus servicios fueron elimiados`,
+    icon: "success"
+  });
+/*<button id="confirmarCompra" class="confirmarCompra">Finalizar compra</button>
+              <button id="vaciarCarrito" onclick=vaciarCarrito()>Vaciar carrito</button>*/
 //console.log(carrito);
 
 //const botonMostrarOcultar = document.createElement("button")
