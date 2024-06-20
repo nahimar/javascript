@@ -95,6 +95,16 @@ enviar.onclick = () => Swal.fire({
    //buttonServicio.innerText = appendChild(div)
 });*/
 
+
+
+fetch("./data.json")
+.then(response => response.json())
+.then(data => {
+    data.forEach(element => {
+        crearCard(element);
+    });}
+);
+
 function crearCard(servicio){
     const card = document.createElement("card");
     
@@ -110,31 +120,35 @@ function crearCard(servicio){
          
     </div>
     `
+    //productos.push(element)
+
+
     container.append(card)   
 }
 
 
 
-fetch("./data.json")
-.then(response => response.json())
-.then(data => {
-    data.forEach(element => {
-        crearCard(element);
-    });
-});
 
-const carritoDeCompra = JSON.parse(localStorage.getItem("carritoDeCompra")) || []
+
+
+const CARRITO_COMPRAS = {
+    productos: [],
+    cantidad: 0,
+    total: 0
+}
+
 
 function agregarACarrito(servicio) {
-    const servicioAgregado = response.find(s => s.id === servicio);  
+    const servicioAgregado = serviciosDisponibles.find(s => s.id === servicio);  
     
-    if (servicioAgregado) {        
-       carritoDeCompra.push(servicioAgregado);
-        console.log(carritoDeCompra);
-          localStorage.setItem("carritoDeCompra", JSON.stringify(carritoDeCompra));
+    if (servicioAgregado) {         
+       //CARRITO_COMPRAS.push(servicioAgregado)
+        CARRITO_COMPRAS.productos.push(servicioAgregado);
+        CARRITO_COMPRAS.cantidad++;
+        CARRITO_COMPRAS.total += parseInt(servicioAgregado.precio)
+        console.log(CARRITO_COMPRAS);
     } else {
         console.log("Servicio no encontrado");
-      
     }
 }
 
@@ -247,3 +261,5 @@ function validarIniciar(e){
 
 // const carrito = document.getElementById("carrito");
 // const btnarrito = document.getElementById("btn-carri
+
+
